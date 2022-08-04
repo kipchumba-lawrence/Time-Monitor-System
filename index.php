@@ -13,7 +13,7 @@ include "databaseconfig.php";
   <link rel="stylesheet" href="Resources/Bootstrap/css/bootstrap.css">
   <script type="text/javascript" src="Resources/jquery.js"></script>
   <script type="text/javascript" src="Resources/Bootstrap/js/bootstrap.js"></script>
-  <link rel="icon" type="image" href="Resources/Images/jeav.ico">
+  <!-- <link rel="icon" type="image" href="Resources/Images/jeav.ico"> -->
   <body>
     <div class="container-fluid">
       <!-- Start WOWSlider.com BODY section -->
@@ -30,7 +30,7 @@ include "databaseconfig.php";
             <div class="form">
               <div class="panel panel-default">
                 <div class="panel-heading panel-heading-custom">
-                  <h2>Book Your Session Here</h2>
+                  <h2>Book Your Gaming Session Here</h2>
                 </div>
                 <div class="panel-body">
                   <form class="form-group" action="" method="post">
@@ -58,6 +58,8 @@ include "databaseconfig.php";
                       <option value="21:00:00">9.00.pm</option>
                     </select>
                     <br>
+                    <label>Console:</label>
+                    <input type="text" name="console" placeholder="Enter console name." required class="rounded-input">
                     <label>Date:</label>
                     <input type="date" name="date" min="<?php echo date('Y-m-d'); ?>" required class="rounded-input">
                     <label>Phone:</label>
@@ -77,40 +79,40 @@ include "databaseconfig.php";
           <div class="col-lg-2 col-md-2 col-sm-">
                 <?php
             if (isset($_POST['submit'])) {
-                $amount = '500'; //Amount to transact
-$phonenuber = $_POST['phone']; // Phone number paying
-$Account_no = 'Jeav'; // Enter account number optional
-$url = 'https://tinypesa.com/api/v1/express/initialize';
-$data = array(
-    'amount' => $amount,
-    'msisdn' => $phonenuber,
-    'account_no'=>$Account_no
-);
-$headers = array(
-    'Content-Type: application/x-www-form-urlencoded',
-    'ApiKey: c2B0fPWXKHS' // Replace with your api key
- );
-$info = http_build_query($data);
+                // $amount = '10'; //Amount to transact
+// $phonenuber = $_POST['phone']; // Phone number paying
+// $Account_no = 'Jeav'; // Enter account number optional
+// $url = 'https://tinypesa.com/api/v1/express/initialize';
+// $data = array(
+//     'amount' => $amount,
+//     'msisdn' => $phonenuber,
+//     'account_no'=>$Account_no
+// );
+// $headers = array(
+//     'Content-Type: application/x-www-form-urlencoded',
+//     'ApiKey: stTbRBQ3fVb' // Replace with your api key
+//  );
+// $info = http_build_query($data);
 
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $info);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-$resp = curl_exec($curl);
-$msg_resp = json_decode($resp);
+// $curl = curl_init();
+// curl_setopt($curl, CURLOPT_URL, $url);
+// curl_setopt($curl, CURLOPT_POST, true);
+// curl_setopt($curl, CURLOPT_POSTFIELDS, $info);
+// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+// curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+// $resp = curl_exec($curl);
+// $msg_resp = json_decode($resp);
 
-if($msg_resp ->success == 'true'){
-    echo "<div class='alert aert-success'>
-WAIT FOR MPESA STK POP UP
-      </div>";
-
+// if($msg_resp ->success == 'true'){
+//     echo "<div class='alert aert-success'>
+// WAIT FOR MPESA STK POP UP
+      // </div>";
 
               $name=$_POST['name'];
               $phone=$_POST['phone'];
               $time=$_POST['time'];
               $date=$_POST['date'];
+              $console=$_POST['console'];
               $tstamp=$date;
               $tstamp .=" ";
               $tstamp .=$time;
@@ -120,15 +122,15 @@ WAIT FOR MPESA STK POP UP
               while ($row=mysqli_fetch_assoc($query3)) {
               $cname=$row['Name'];
               }
-              $query2="INSERT INTO bookings(Client,Phone,Artist,Timebooked)values('$name','$phone','$cname','$tstamp')";
+              $query2="INSERT INTO bookings(Client,Phone,Console,Timebooked)values('$name','$phone','$cname','$tstamp')";
               mysqli_query($conn,$query2);
             }
-            else {
+            // else {
                 
-                echo "Insufficient balance. Please ensure you have ksh.500 in your account before booking.
+            //     echo "Insufficient balance. Please ensure you have ksh.500 in your account before booking.
      
-                 Thank you.";
-            }}
+            //      Thank you.";
+            // }
             
              ?>
           </div>

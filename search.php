@@ -12,20 +12,20 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
  <meta charset="utf-8">
- <title>Jeav Beauty Palour</title>
+ <title>Time Monitor System</title>
 
  <link rel="stylesheet" href="Resources/Bootstrap/css/bootstrap.css">
  <script type="text/javascript" src="Resources/jquery.js"></script>
  <link rel="stylesheet" href="jeav.css">
  <script type="text/javascript" src="Resources/Bootstrap/js/bootstrap.js"></script>
- <link rel="icon" type="image" href="Resources/Images/jeav.ico">
+ <!-- <link rel="icon" type="image" href="Resources/Images/jeav.ico"> -->
    <body>
 <div class="container-fluid">
   <nav class="navbar navbar-default">
   <div class="container-fluid">
   <div class="navbar-header">
    <a class="navbar-brand" href="#">
-     <img src="Resources/Images/jeav.png" alt="" height="35" width="35">
+     <!-- <img src="Resources/Images/jeav.png" alt="" height="35" width="35"> -->
    </a>
   </div>
   <ul class="nav navbar-nav">

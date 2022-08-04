@@ -13,15 +13,16 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Jeav Beauty Palour</title>
+  <title>Time Monitor System</title>
 
   <link rel="stylesheet" href="Resources/Bootstrap/css/bootstrap.css">
   <script type="text/javascript" src="Resources/jquery.js"></script>
   <link rel="stylesheet" href="jeav.css">
   <script type="text/javascript" src="Resources/Bootstrap/js/bootstrap.js"></script>
-  <link rel="icon" type="image" href="Resources/Images/jeav.ico">
-  <style>
+  <!-- <link rel="icon" type="image" href="Resources/Images/jeav.ico"> -->
+  
   </head>
+  <style>
   body {
     font-family: Arial, Helvetica, sans-serif;
   }
@@ -79,7 +80,7 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
   <div class="container-fluid">
   <div class="navbar-header">
    <a class="navbar-brand" href="#">
-     <img src="Resources/Images/jeav.png" alt="" height="35" width="35">
+     <!-- <img src="Resources/Images/jeav.png" alt="" height="35" width="35"> -->
    </a>
   </div>
   <ul class="nav navbar-nav">
@@ -108,14 +109,13 @@ while ($row=mysqli_fetch_assoc($result)) {
   echo '  <div class="flip-card">
    <div class="flip-card-inner">
      <div class="flip-card-front">
-       <img src="Resources/Images/jeav.png" alt="Avatar" style="width:260px;height:260px;">
        <hr height="110">
 <h2>Station '.$counter.'</h2>
   </div>
      <div class="flip-card-back">
-       <h3>Artist:</h3>'.$row['Name'].'
-       <h3>Service:</h3>'.$row['Specialty'].'
-       <h3>Phone Number:</h3>'.$row['Phone'].'
+       <h3>Station Number:</h3>'.$row['Name'].'
+       <h3>Console Type:</h3>'.$row['Console'].'
+      
        <br>
        <br>
        <a href="updatestation.php?id='.$row['id'].'">

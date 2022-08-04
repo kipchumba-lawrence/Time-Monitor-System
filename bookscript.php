@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","jeavxyz_jeav","Jeav2021!","jeavxyz_jeav");
+include "databaseconfig.php";
 $getter=mysqli_query($conn,"SELECT * FROM bookings");
 $now=date('Y-m-d H:i:s');
 echo $now;

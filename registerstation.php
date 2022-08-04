@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","jeavxyz_jeav","Jeav2021!","jeavxyz_jeav");
+include "databaseconfig.php";
 session_start();
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
@@ -11,12 +11,11 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Jeav Beauty Palour</title>
+  <title>Time Monitor System</title>
   <link rel="stylesheet" href="jeav.css">
   <link rel="stylesheet" href="Resources/Bootstrap/css/bootstrap.css">
   <script type="text/javascript" src="Resources/jquery.js"></script>
   <script type="text/javascript" src="Resources/Bootstrap/js/bootstrap.js"></script>
-  <link rel="icon" type="image" href="Resources/Images/jeav.ico">
 </head>
   <body>
     <div class="container-fluid">
@@ -24,7 +23,7 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
    <div class="container-fluid">
      <div class="navbar-header">
        <a class="navbar-brand" href="#">
-         <img src="Resources/Images/jeav.png" alt="" height="35" width="35">
+         <!-- <img src="Resources/Images/jeav.png" alt="" height="35" width="35"> -->
        </a>
      </div>
      <ul class="nav navbar-nav">
@@ -48,9 +47,7 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
         <thead>
           <tr>
             <th><center>S.No</center></th>
-            <th><center>Name</center></th>
-            <th><center>Phone</center></th>
-            <th><center>Specialty</center></th>
+            <th><center>Console</center></th>
             <th><center>Update</center></th>
           </tr>
         </thead>
@@ -64,8 +61,7 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
        <tr>
          <td align="center"><?php echo $count1; ?></td>
          <td align="center"><?php echo $row['Name']; ?></td>
-         <td align="center"><?php echo $row['Phone']; ?></td>
-         <td align="center"><?php echo $row['Specialty']; ?></td>
+         <td align="center"><?php echo $row['Console']; ?></td>
          <td align="center"><a href="updatestation.php?id=<?php echo $row['id']?>">
              <button type="button" class="btn btn-lg btn-primary" name="button">Update</button> </a></td>
        </tr>
@@ -84,15 +80,14 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
   </div>
   <div class="panel-body">
       <form class="form-group" action="" method="post">
-        <label>Artist Name:</label>
-        <input type="text" name="name" required value="" placeholder="Input artist's name here." class="form-control">
-        <label>Phone Number:</label>
-        <input type="text" name="phone" value="" maxlength="10" placeholder="Input artist's phone number." required title="phone" class="form-control">
-        <label>Specialty:</label>
+        <label>Station Number:</label>
+        <input type="text" name="name" required value="" placeholder="Input Station's number here." class="form-control">
+       
+        <label>Console:</label>
         <select class="form-control" name="spec">
-          <option value="Makeup">Makeup</option>
-          <option value="Nails">Nails</option>
-          <option value="Hair">Hair</option>
+          <option value="Ps4">Ps4</option>
+          <option value="Ps5">Ps5</option>
+          <option value="XBox">XBox</option>
         </select>
         <br>
 <center>
@@ -106,9 +101,8 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
       <?php
 if (isset($_POST['submit'])) {
   $name=$_POST['name'];
-  $phone=$_POST['phone'];
   $spec=$_POST['spec'];
-  $query="INSERT INTO station(Name,Phone,Specialty) values('$name','$phone','$spec')";
+  $query="INSERT INTO station(Name,Console) values('$name','$spec')";
   mysqli_query($conn,$query);
   echo "Record inserted succesfully.";
 }

@@ -1,5 +1,6 @@
 <?php
-$conn = mysqli_connect("localhost","jeavxyz_jeav","Jeav2021!","jeavxyz_jeav");
+// $conn' = mysqli_connect("localhost","jeavxyz_jeav","Jeav2021!","jeavxyz_jeav");
+include "databaseconfig.php";
 $id=$_REQUEST['id'];
 $query="SELECT * FROM station WHERE id='".$id."'";
 $result=mysqli_query($conn,$query);
@@ -9,13 +10,12 @@ $row=mysqli_fetch_assoc($result);
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Jeav Beauty Palour</title>
+  <title>Time Monitor System</title>
 
   <link rel="stylesheet" href="Resources/Bootstrap/css/bootstrap.css">
   <script type="text/javascript" src="Resources/jquery.js"></script>
   <link rel="stylesheet" href="jeav.css">
   <script type="text/javascript" src="Resources/Bootstrap/js/bootstrap.js"></script>
-  <link rel="icon" type="image" href="Resources/Images/jeav.ico">
   </head>
   <body>
     <div class="container-fluid">
@@ -23,7 +23,7 @@ $row=mysqli_fetch_assoc($result);
     <div class="container-fluid">
      <div class="navbar-header">
        <a class="navbar-brand" href="#">
-         <img src="Resources/Images/jeav.png" alt="" height="35" width="35">
+         <!-- <img src="Resources/Images/jeav.png" alt="" height="35" width="35"> -->
        </a>
      </div>
      <ul class="nav navbar-nav">
@@ -51,21 +51,21 @@ $row=mysqli_fetch_assoc($result);
       if (isset($_POST['new'])&& $_POST['new']==1) {
         $id=$_REQUEST['id'];
         $name=$_REQUEST['Name'];
-        $phone=$_REQUEST['Phone'];
-        $specialty=$_REQUEST['Specialty'];
-        $update="UPDATE station set Name='".$name."',Phone='".$phone."',Specialty='".$specialty."' WHERE id='".$id."'";
+        // $phone=$_REQUEST['Phone'];
+        $specialty=$_REQUEST['Console'];
+        $update="UPDATE station set Name='".$name."',Console='".$specialty."' WHERE id='".$id."'";
         mysqli_query($conn,$update);
         $status="Record Updated succesfully.<br><a href='station.php>View Stations</a>'";
         echo $status;
       }else {
          ?>
          <input type="hidden" name="new" value="1">
-         <label>Name:</label>
+         <label>Number :</label>
          <input type="text" name="Name" class="form-control" value="<?php echo $row['Name']; ?>">
-         <label>Phone:</label>
-         <input type="number" name="Phone" class="form-control" value="<?php echo $row['Phone']; ?>">
-         <label>Specialty:</label>
-         <input type="text" class="form-control" name="Specialty" value="<?php echo $row['Specialty']; ?>">
+         <!-- <label>Phone:</label> -->
+         <!-- <input type="number" name="Phone" class="form-control" value="<?php echo $row['Phone']; ?>"> -->
+         <label>Console:</label>
+         <input type="text" class="form-control" name="Console" value="<?php echo $row['Console']; ?>">
          <br>
          <input type="submit" name="update" value="Update" class="btn btn-lg btn-primary">
          <!-- <a href="delete.php?id=<?php $id ?>"><button type="button" name="delete" class="btn btn-danger btn-lg">Delete</button></a> -->

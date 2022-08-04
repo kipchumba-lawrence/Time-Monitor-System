@@ -13,7 +13,7 @@ $row=mysqli_fetch_assoc($result);
 <script type="text/javascript" src="Resources/jquery.js"></script>
 <link rel="stylesheet" href="jeav.css">
 <script type="text/javascript" src="Resources/Bootstrap/js/bootstrap.js"></script>
-<link rel="icon" type="image" href="Resources/Images/jeav.ico">  <head>
+<!-- <link rel="icon" type="image" href="Resources/Images/jeav.ico">  <head> -->
     <meta charset="utf-8">
     <title></title>
   </head>
@@ -76,7 +76,7 @@ $row=mysqli_fetch_assoc($result);
           <option value="20:00:00">8.00.pm</option>
           <option value="21:00:00">9.00.pm</option>
         </select>
-        <label>Artist:</label>
+        <label>Station:</label>
         <select class="form-control" name="artist" required>
         <?php
         $sel_query="SELECT * FROM station";

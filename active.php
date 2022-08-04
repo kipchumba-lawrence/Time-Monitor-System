@@ -76,7 +76,7 @@ if(!isset($_SESSION["username"]) || $_SESSION["loggedin"] !== true){
   <div class="container-fluid">
   <div class="navbar-header">
    <a class="navbar-brand" href="#">
-     <img src="Resources/Images/jeav.png" alt="" height="35" width="35">
+     <!-- <img src="Resources/Images/jeav.png" alt="" height="35" width="35"> -->
    </a>
   </div>
   <ul class="nav navbar-nav">
